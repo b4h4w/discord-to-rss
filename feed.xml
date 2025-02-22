@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>Discord Channel Feed</title>
+    <link>https://discord.com</link>
+    <description>RSS feed of Discord channel messages</description>
+    <lastBuildDate>Sat, 22 Feb 2025 21:42:24 +0000</lastBuildDate>
+    <item>
+      <title>Message from b4h4w_</title>
+      <link>https://discord.com/channels/1342650081333215232/1342892359242743850/1342974785994362931</link>
+      <description>ingest feed sampl</description>
+      <pubDate>Sat, 22 Feb 2025 21:42:20 +0000</pubDate>
+      <guid>1342974785994362931</guid>
+    </item>
+  </channel>
+</rss>
