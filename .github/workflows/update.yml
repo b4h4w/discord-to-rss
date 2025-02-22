@@ -24,7 +24,7 @@ jobs:
 
       - name: Run bot and generate RSS
         env:
-          BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: |
           python bot.py &  # Run bot in background
