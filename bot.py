@@ -4,30 +4,38 @@ import json
 import os
 from datetime import datetime
 
+# Set up intents
 intents = discord.Intents.default()
 intents.messages = True
 intents.message_content = True
+intents.guilds = True
 
 bot = commands.Bot(command_prefix="! ", intents=intents)
 
-# Config - Replace these with your values
-CHANNEL_ID = "CHANNEL_ID"  # Replace with your Discord channel ID
-TOKEN = DISCORD_TOKEN      # Replace with your Discord bot token
+# Config from environment variables
+CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 # File to store messages
 MESSAGE_FILE = "messages.json"
 
 # Load existing messages
 def load_messages():
-    if os.path.exists(MESSAGE_FILE):
-        with open(MESSAGE_FILE, "r") as f:
-            return json.load(f)
+    try:
+        if os.path.exists(MESSAGE_FILE):
+            with open(MESSAGE_FILE, "r") as f:
+                return json.load(f)
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"Error loading messages: {e}")
     return []
 
 # Save messages
 def save_messages(messages):
-    with open(MESSAGE_FILE, "w") as f:
-        json.dump(messages, f, indent=2)
+    try:
+        with open(MESSAGE_FILE, "w") as f:
+            json.dump(messages, f, indent=2)
+    except IOError as e:
+        print(f"Error saving messages: {e}")
 
 @bot.event
 async def on_ready():
