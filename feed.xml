@@ -4,6 +4,13 @@
     <title>Discord Channel Feed</title>
     <link>https://discord.com</link>
     <description>RSS feed of Discord channel messages</description>
-    <lastBuildDate>Sat, 22 Feb 2025 21:48:16 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Feb 2025 21:49:42 +0000</lastBuildDate>
+    <item>
+      <title>Message from b4h4w_</title>
+      <link>https://discord.com/channels/1342650081333215232/1342892359242743850/1342976463334539425</link>
+      <description>hello</description>
+      <pubDate>Sat, 22 Feb 2025 21:49:00 +0000</pubDate>
+      <guid>1342976463334539425</guid>
+    </item>
   </channel>
 </rss>
