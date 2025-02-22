@@ -11,7 +11,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="! ", intents=intents)
 
 # Config - Replace these with your values
-CHANNEL_ID = "CHANNEL_ID"  # Replace with your Discord channel ID
+CHANNEL_ID = CHANNEL_ID  # Replace with your Discord channel ID
 TOKEN = "DISCORD_TOKEN"      # Replace with your Discord bot token
 
 # File to store messages
