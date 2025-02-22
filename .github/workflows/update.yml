@@ -1,0 +1,41 @@
+name: Update RSS Feed
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"  # Runs every 15 minutes
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run bot and generate RSS
+        env:
+          BOT_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+        run: |
+          python bot.py &  # Run bot in background
+          sleep 60        # Wait 1 minute to collect some messages
+          pkill -f "python bot.py"  # Stop the bot
+          python generate_rss.py
+
+      - name: Commit and push RSS feed
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add feed.xml
+          git commit -m "Update RSS feed" || echo "No changes to commit"
+          git push
