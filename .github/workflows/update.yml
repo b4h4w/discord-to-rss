@@ -31,6 +31,9 @@ jobs:
           sleep 60        # Wait 1 minute to collect some messages
           pkill -f "python bot.py"  # Stop the bot
           python generate_rss.py
+      
+      - name: Pull latest changes
+        run: git pull origin main
 
       - name: Commit and push RSS feed
         run: |
